@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://impl.ws.iwinner.bug.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="EmployeeServiceImplService" targetNamespace="http://impl.ws.iwinner.bug.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://impl.ws.iwinner.bug.com/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://impl.ws.iwinner.bug.com/">
+  <xs:element name="getBugDetailsOps" type="tns:getBugDetailsOps"/>
+  <xs:element name="getBugDetailsOpsResponse" type="tns:getBugDetailsOpsResponse"/>
+  <xs:element name="getInsertEmployeeOps" type="tns:getInsertEmployeeOps"/>
+  <xs:element name="getInsertEmployeeOpsResponse" type="tns:getInsertEmployeeOpsResponse"/>
+  <xs:element name="getUserMessageOps" type="tns:getUserMessageOps"/>
+  <xs:element name="getUserMessageOpsResponse" type="tns:getUserMessageOpsResponse"/>
+  <xs:complexType name="getUserMessageOps">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="username" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserMessageOpsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="getUserMessageRespone" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getBugDetailsOps">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getBugDetailsOpsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="getBugDetailsResponse" type="tns:bugDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bugDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bugDesc" type="xs:string"/>
+      <xs:element minOccurs="0" name="bugDoubleId" type="xs:double"/>
+      <xs:element minOccurs="0" name="bugFloatId" type="xs:float"/>
+      <xs:element minOccurs="0" name="bugInfo" type="xs:string"/>
+      <xs:element minOccurs="0" name="bugLongId" type="xs:long"/>
+      <xs:element minOccurs="0" name="bugName" type="xs:string"/>
+      <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getInsertEmployeeOps">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bugDTO" type="tns:bugDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getInsertEmployeeOpsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="getInsertEmployeeResponse" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Exception" type="tns:Exception"/>
+  <xs:complexType name="Exception">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getInsertEmployeeOps">
+    <wsdl:part element="tns:getInsertEmployeeOps" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBugDetailsOpsResponse">
+    <wsdl:part element="tns:getBugDetailsOpsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBugDetailsOps">
+    <wsdl:part element="tns:getBugDetailsOps" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserMessageOps">
+    <wsdl:part element="tns:getUserMessageOps" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserMessageOpsResponse">
+    <wsdl:part element="tns:getUserMessageOpsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Exception">
+    <wsdl:part element="tns:Exception" name="Exception">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInsertEmployeeOpsResponse">
+    <wsdl:part element="tns:getInsertEmployeeOpsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="employeeServiceIF">
+    <wsdl:operation name="getUserMessageOps">
+      <wsdl:input message="tns:getUserMessageOps" name="getUserMessageOps">
+    </wsdl:input>
+      <wsdl:output message="tns:getUserMessageOpsResponse" name="getUserMessageOpsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getBugDetailsOps">
+      <wsdl:input message="tns:getBugDetailsOps" name="getBugDetailsOps">
+    </wsdl:input>
+      <wsdl:output message="tns:getBugDetailsOpsResponse" name="getBugDetailsOpsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getInsertEmployeeOps">
+      <wsdl:input message="tns:getInsertEmployeeOps" name="getInsertEmployeeOps">
+    </wsdl:input>
+      <wsdl:output message="tns:getInsertEmployeeOpsResponse" name="getInsertEmployeeOpsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EmployeeServiceImplServiceSoapBinding" type="tns:employeeServiceIF">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getBugDetailsOps">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getBugDetailsOps">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBugDetailsOpsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getUserMessageOps">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUserMessageOps">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUserMessageOpsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getInsertEmployeeOps">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getInsertEmployeeOps">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getInsertEmployeeOpsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EmployeeServiceImplService">
+    <wsdl:port binding="tns:EmployeeServiceImplServiceSoapBinding" name="EmployeeServiceImplPort">
+      <soap:address location="http://localhost:3737/wsServices/services/employeeservice"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
